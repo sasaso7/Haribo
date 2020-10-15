@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Haribo</title>
+</head>
+<body>
+<h1>This is our Current kind of candybags</h1>
+<h3>Click the bags to see more or maybe create your own?</h3>
+
+
+<table id="baglist" th:each="element: ${list}">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Weight</th>
+
+    </tr>
+    <tr>
+        <td th:text="${element.name}"></td>
+        <td th:text="${element.price}"></td>
+        <td th:text="${element.weight}"></td>
+        <td> <button th:onclick="'javascript:shift('+ ${element.Candybag_Id} +' )'">SEE MORE</button> </td>
+    </tr>
+
+</table>
+
+<div>
+    <h4>Create a candy</h4>
+    <button onclick="create()">CREATE</button>
+
+    <script>
+        function shift(id){
+            window.location="/seemore/"+id;
+        }
+        function create() {
+            window.location="/create";
+
+        }
+    </script>
+</div>
+</body>
+</html>
